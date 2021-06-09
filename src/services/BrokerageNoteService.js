@@ -8,6 +8,12 @@ const create = async (dataBroker) => {
   return response(CODE.OK, 'Nota adicionada com sucesso');
 };
 
+const findAll = async () => {
+  const brokerageList = await BrokerageNote.findAll();
+  return { statusCode: CODE.OK, brokerageList };
+};
+
 module.exports = {
   create,
+  findAll,
 };

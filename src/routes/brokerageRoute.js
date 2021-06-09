@@ -2,7 +2,7 @@ const router = require('express').Router();
 const BrokerageNote = require('../controllers/BrokerageNoteController');
 
 router.route('/')
-  .get()
+  .get(BrokerageNote.findAll)
   .post(BrokerageNote.create)
   .put()
   .delete();

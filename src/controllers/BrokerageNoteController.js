@@ -11,6 +11,16 @@ const create = async (req, res, next) => {
   }
 };
 
+const findAll = async (_req, res, next) => {
+  try {
+    const { statusCode, brokerageList } = await BrokerageNote.findAll();
+    res.status(statusCode).json(brokerageList);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   create,
+  findAll,
 };
