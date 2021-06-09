@@ -11,4 +11,6 @@ app.get('/', (_req, res) => {
   res.send('Online');
 });
 
+app.use('/', routes);
+
 app.listen(PORT, () => console.log('Online'));
