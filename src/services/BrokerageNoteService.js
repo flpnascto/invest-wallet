@@ -13,7 +13,21 @@ const findAll = async () => {
   return { statusCode: CODE.OK, brokerageList };
 };
 
+const update = async (id, dataBroker) => {
+  const data = await BrokerageNote.update(id, dataBroker);
+  if (data.modifiedCount === 0) return response(CODE.NOTFOUND, 'Nota não encontrada');
+  return response(CODE.OK, 'Nota alterada com sucesso');
+};
+
+const remove = async (id) => {
+  const data = await BrokerageNote.remove(id);
+  if (data.deletedCount === 0) return response(CODE.NOTFOUND, 'Nota não encontrada');
+  return response(CODE.OK, 'Nota removida com sucesso');
+};
+
 module.exports = {
   create,
   findAll,
+  update,
+  remove,
 };

@@ -7,4 +7,10 @@ router.route('/')
   .put()
   .delete();
 
+router.route('/:id')
+  .get()
+  .post()
+  .put(BrokerageNote.update)
+  .delete(BrokerageNote.remove);
+
 module.exports = router;

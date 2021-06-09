@@ -20,7 +20,30 @@ const findAll = async (_req, res, next) => {
   }
 };
 
+const update = async (req, res, next) => {
+  const { id } = req.params;
+  const dataBroker = req.body;
+  try {
+    const { statusCode, message } = await BrokerageNote.update(id, dataBroker);
+    res.status(statusCode).json({ statusCode, message });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const remove = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const { statusCode, message } = await BrokerageNote.remove(id);
+    res.status(statusCode).json({ statusCode, message });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   create,
   findAll,
+  update,
+  remove,
 };
